@@ -21,6 +21,6 @@ Then add **hubot-render** to your `external-scripts.json`:
 ## Sample Interaction
 
 ```
-user1>> hubot hello
-hubot>> hello!
+user1>> hubot render mytemplate1 title:Joe, calc:6
+hubot>> Joe spends 6
 ```
