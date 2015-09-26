@@ -1,19 +1,11 @@
-chai = require 'chai'
-sinon = require 'sinon'
-chai.use require 'sinon-chai'
-
-expect = chai.expect
+expect = require('chai').use(require('chai-as-promised')).expect
+hubot = require('hubot-mock-adapter-as-promised')
 
 describe 'render', ->
-  beforeEach ->
-    @robot =
-      respond: sinon.spy()
-      hear: sinon.spy()
+  hubot.includeContext ->
+    robot.loadFile(require('path').resolve('.', 'src'), 'render.coffee')
 
-    require('../src/render')(@robot)
-
-  it 'registers a respond listener', ->
-    expect(@robot.respond).to.have.been.calledWith(/hello/)
-
-  it 'registers a hear listener', ->
-    expect(@robot.hear).to.have.been.calledWith(/orly/)
+  context 'hello', ->
+    it 'registers a respond listener', ->
+      expect(hubot.text('hubot render tpl1 title:Jane, calc:25'))
+        .to.eventually.match(/Jane spends 25/)

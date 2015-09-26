@@ -1,22 +1,21 @@
 # Description
-#   A hubot script to render template
-#
-# Configuration:
-#   LIST_OF_ENV_VARS_TO_SET
+#   A hubot script to render template.
+#   Templates should be written in [mustache](https://mustache.github.io/)
+#   and be stored by hubot-remember-multiline module.
 #
 # Commands:
-#   hubot hello - <what the respond trigger does>
-#   orly - <what the hear trigger does>
+#   hubot render <name> - show the template
+#   hubot render <name> key1:value1, key2:value2, ... - render the template
 #
 # Notes:
-#   <optional notes required for the script>
 #
 # Author:
 #   Ikuo Matsumura <makiczar@gmail.com>
 
-module.exports = (robot) ->
-  robot.respond /hello/, (msg) ->
-    msg.reply "hello!"
+Mustache = require('mustache')
 
-  robot.hear /orly/, ->
-    msg.send "yarly"
+module.exports = (robot) ->
+  robot.respond /render\s+(.+)/, (msg) ->
+    values = msg.match[1]
+    result = Mustache.render("{{title}} spends {{calc}}", title: values, calc: 50)
+    msg.send result
