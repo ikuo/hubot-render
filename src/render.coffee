@@ -27,7 +27,7 @@ module.exports = (robot) ->
           result = Mustache.render(template, values)
           msg.send result
         .catch (err) ->
-          msg.reply("Invalid values '#{valuesString}'. #{err?.message}", err)
+          msg.reply("Invalid values '#{valuesString}'", err)
 
     else
       msg.send "Unknown template `#{name}`."
