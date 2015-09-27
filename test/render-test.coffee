@@ -33,3 +33,15 @@ describe 'render', ->
     it 'rendereds the template', ->
       expect(hubot.text('hubot render tpl-hyphen title:Joe, calc:6'))
         .to.eventually.match(/Joe spends 6/)
+
+  context 'with malformat values', ->
+    beforeEach ->
+      robot.brain.set('remember', tpl1: '{{title}} spends {{calc}}')
+
+    it 'shows error message of underlying parser', ->
+      expect(hubot.text('hubot render tpl1 title:Joe, calc=6'))
+        .to.eventually.match(/field separator not found: "calc=6"/)
+
+    it 'shows values string to parse', ->
+      expect(hubot.text('hubot render tpl1 title:Joe, calc=6'))
+        .to.eventually.match(/title:Joe, calc=6/)

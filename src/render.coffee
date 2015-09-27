@@ -20,9 +20,14 @@ module.exports = (robot) ->
   robot.respond ///render\s+(#{KEY})\s+(.+)///, (msg) ->
     name = msg.match[1]
     template = templates(name)
+    valuesString = msg.match[2]
     if template?
-      parser.single(msg.match[2]).then (values) ->
-        result = Mustache.render(template, values)
-        msg.send result
+      parser.single(valuesString)
+        .then (values) ->
+          result = Mustache.render(template, values)
+          msg.send result
+        .catch (err) ->
+          msg.reply("Invalid values '#{valuesString}'. #{err?.message}", err)
+
     else
       msg.send "Unknown template `#{name}`."
