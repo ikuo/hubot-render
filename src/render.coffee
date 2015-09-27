@@ -11,7 +11,7 @@
 #   Ikuo Matsumura <makiczar@gmail.com>
 
 Mustache = require('mustache')
-parser = require('csv-map-parser')
+parser = require('lcsv-parser')
 
 module.exports = (robot) ->
   robot.respond /render\s+(\w+)\s+(.+)/, (msg) ->
