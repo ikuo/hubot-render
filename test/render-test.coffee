@@ -7,7 +7,7 @@ describe 'render', ->
 
   context 'with single-line template', ->
     beforeEach ->
-      robot.brain.data.remember = { tpl1: '{{title}} spends {{calc}}' }
+      robot.brain.set('remember', tpl1: '{{title}} spends {{calc}}')
 
     it 'rendereds the template', ->
       expect(hubot.text('hubot render tpl1 title:Joe, calc:6'))
@@ -15,7 +15,7 @@ describe 'render', ->
 
   context 'with multi-line template', ->
     beforeEach ->
-      robot.brain.data.remember = { tpl1: "{{title}} spends\n{{calc}} dollars." }
+      robot.brain.set('remember', tpl1: "{{title}} spends\n{{calc}} dollars.")
 
     it 'rendereds the template', ->
       expect(hubot.text('hubot render tpl1 title:Joe, calc:6'))

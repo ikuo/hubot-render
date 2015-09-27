@@ -22,7 +22,7 @@
   },
   "peerDependencies": {
     "hubot": "2.x",
-    "hubot-remember-multiline": "1.x"
+    "hubot-remember-multiline": "1.x :>= 1.1"
   },
   "devDependencies": {
     "chai": "^3.3.0",

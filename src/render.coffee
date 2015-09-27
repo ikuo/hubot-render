@@ -14,7 +14,7 @@ Mustache = require('mustache')
 parser = require('lcsv-parser')
 
 module.exports = (robot) ->
-  templates = (name) -> robot.brain.data.remember?[name]
+  templates = (name) -> robot.brain.get('remember')?[name]
 
   robot.respond /render\s+(\w+)\s+(.+)/, (msg) ->
     name = msg.match[1]
