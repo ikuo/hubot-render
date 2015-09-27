@@ -1,6 +1,6 @@
 # hubot-render
 
-A hubot script to render template
+A hubot script to render [mustache](https://mustache.github.io/) templates.
 
 See [`src/render.coffee`](src/render.coffee) for full documentation.
 

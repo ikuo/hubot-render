@@ -1,10 +1,15 @@
 {
   "name": "hubot-render",
-  "description": "A hubot script to render template",
+  "description": "A hubot script to render mustache templates",
   "version": "0.0.0",
   "author": "Ikuo Matsumura <makiczar@gmail.com>",
   "license": "MIT",
-  "keywords": "hubot, template, render",
+  "keywords": [
+    "hubot",
+    "render",
+    "template",
+    "mustache"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/hubot-scripts/hubot-render.git"
