@@ -12,11 +12,12 @@
 
 Mustache = require('mustache')
 parser = require('lcsv-parser')
+KEY = '[\\w-]+'
 
 module.exports = (robot) ->
   templates = (name) -> robot.brain.get('remember')?[name]
 
-  robot.respond /render\s+(\w+)\s+(.+)/, (msg) ->
+  robot.respond ///render\s+(#{KEY})\s+(.+)///, (msg) ->
     name = msg.match[1]
     template = templates(name)
     if template?
