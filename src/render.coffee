@@ -4,7 +4,6 @@
 #   and be stored by hubot-remember-multiline module.
 #
 # Commands:
-#   hubot render <name> - show content of a template
 #   hubot render <name> key1:value1, key2:value2, ... - render a template
 #
 # Author:
