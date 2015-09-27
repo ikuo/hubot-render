@@ -8,12 +8,16 @@ See [`src/render.coffee`](src/render.coffee) for full documentation.
 
 In hubot project repo, run:
 
-`npm install hubot-render --save`
+```
+npm install hubot-remember-multiline --save
+npm install hubot-render --save
+```
 
 Then add **hubot-render** to your `external-scripts.json`:
 
 ```json
 [
+  "hubot-remember-multiline",
   "hubot-render"
 ]
 ```
@@ -21,6 +25,10 @@ Then add **hubot-render** to your `external-scripts.json`:
 ## Sample Interaction
 
 ```
-user1>> hubot render mytemplate1 title:Joe, calc:6
+user1>> hubot remember tmpl1 is
+{{title}} spends {{calc}}
+user1>> hubot render tmpl1 title:Joe, calc:6
 hubot>> Joe spends 6
 ```
+
+See [./test/*.coffee](./test) for more examples.

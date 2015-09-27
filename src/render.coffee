@@ -14,9 +14,14 @@ Mustache = require('mustache')
 parser = require('lcsv-parser')
 
 module.exports = (robot) ->
+  templates = (name) -> robot.brain.data.remember?[name]
+
   robot.respond /render\s+(\w+)\s+(.+)/, (msg) ->
     name = msg.match[1]
-    # TODO: find template from brain by name
-    parser.single(msg.match[2]).then (values) ->
-      result = Mustache.render("{{title}} spends {{calc}}", values)
-      msg.send result
+    template = templates(name)
+    if template?
+      parser.single(msg.match[2]).then (values) ->
+        result = Mustache.render(template, values)
+        msg.send result
+    else
+      msg.send "Unknown template `#{name}`."
